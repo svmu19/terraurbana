@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TerraUrbana</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<!-- =========================== -->
+<!-- WHATSAPP FLOAT -->
+<!-- =========================== -->
+
+<a href="https://wa.me/56936784249" class="whatsapp-float" target="_blank">
+   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+</a>
+
+<!-- =========================== -->
+<!-- HEADER -->
+<!-- =========================== -->
+
+<header class="header">
+  <div class="header-container">
+
+    <div class="logo">
+      <img src="terraurbana.png" alt="Logo">
+    </div>
+
+<nav class="nav">
+  <ul>
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#irresistibles">Irresistibles</a></li>
+    <li><a href="#promociones">Promociones</a></li>
+    <li><a href="#loselegidos">Los Elegidos</a></li>
+    <li><a href="#churrascos">Churrascos</a></li>
+    <li><a href="#asplancha">As a la Plancha</a></li>
+    <li><a href="#otros">Otros</a></li>
+    <li><a href="#bebestibles">Bebestibles</a></li>
+  </ul>
+</nav>
+
+
+
+    <!-- 🛒 CARRITO -->
+    <div class="cart-icon" onclick="openCart()">
+      <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="Carrito">
+      <span id="cart-count">0</span>
+    </div>
+
+  </div>
+</header>
+
+<!-- =========================== -->
+<!-- CARRITO MODAL PRO -->
+<!-- =========================== -->
+
+<div id="cart-modal" class="cart-modal">
+  <div class="cart-content">
+
+    <div class="cart-header">
+      <div class="cart-header-left">
+        <img src="" class="cart-header-icon">
+        <h2>Tu Carrito</h2>
+      </div>
+      <button class="close-cart" onclick="closeCart()">✕</button>
+    </div>
+
+    <div id="cart-items"></div>
+
+    <div class="cart-footer">
+      <h3>Total: $<span id="cart-total">0</span></h3>
+      <button class="send-whatsapp" onclick="sendCartToWhatsApp()">Enviar pedido</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================== -->
+<!-- CARRUSEL -->
+<!-- =========================== -->
+
+<section class="carousel">
+  <div class="carousel-container">
+
+    <div class="carousel-slide active">
+      <img src="imagen1.jpg" alt="1">
+    </div>
+
+    <div class="carousel-slide">
+      <img src="imagen2.jpg" alt="2">
+    </div>
+
+    <div class="carousel-slide">
+      <img src="imagen3.jpg" alt="3">
+    </div>
+
+    <div class="carousel-dots-container">
+      <button class="dot active" onclick="moveSlide(0)"></button>
+      <button class="dot" onclick="moveSlide(1)"></button>
+      <button class="dot" onclick="moveSlide(2)"></button>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================== -->
+<!-- IRRESISTIBLES A $5.500 -->
+<!-- =========================== -->
+
+<div class="container" id="irresistibles">
+  <h1>Irresistibles <span style="color:#c50000; font-size:1.2rem;">(desde $4.490)</span></h1>
+  <div class="menu-container">
+
+    <!-- 1 - Churrasco + bebida -->
+    <div class="card">
+      <img src="Irresistibles/1.webp">
+      <div class="card-content">
+        <h3>Churrasco + bebida lata</h3>
+        <p>Churrasco italiano + Pepsi lata 350 ml.</p>
+        <div class="card-footer">
+          <div>
+            <span class="price">$5500</span>
+            <span style="text-decoration: line-through; color:#888; font-size:0.85rem; margin-left:8px;">
+              $5990
+            </span>
+          </div>
+          <button class="add-btn" onclick="addToCart('Churrasco + bebida lata', 5500, 'irresistible.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 - Pizza + bebida -->
+    <div class="card">
+      <img src="irresistible.webp">
+      <div class="card-content">
+        <h3>Pizza individual + bebida</h3>
+        <p>Una pizza individual de pepperoni + bebida en lata.</p>
+        <div class="card-footer">
+          <span class="price">$4490</span>
+          <button class="add-btn" onclick="addToCart('Pizza individual + bebida', 4490, 'irresistible.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 - Completo + bebida -->
+    <div class="card">
+      <img src="irresistible.webp">
+      <div class="card-content">
+        <h3>Completo + bebida</h3>
+        <p>Elige tu completo o italiano + bebida en lata.</p>
+        <div class="card-footer">
+          <span class="price">$5290</span>
+          <button class="add-btn" onclick="addToCart('Completo + bebida', 5290, 'irresistible.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================== -->
+<!-- PROMOCIONES -->
+<!-- =========================== -->
+
+<div class="container" id="promociones">
+  <h1>Promociones</h1>
+  <div class="menu-container">
+
+    <!-- 1 -->
+    <div class="card">
+      <img src="Promociones/1.webp">
+      <div class="card-content">
+        <h3>Completo + papas + lata bebida</h3>
+        <p>Completo (o italiano) de 15 cm con porción de papas fritas y bebida en lata de 350 cc a elección.</p>
+        <div class="card-footer">
+          <span class="price">$5990</span>
+          <button class="add-btn" onclick="addToCart('Completo + papas + lata bebida', 5990, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <img src="Promociones/2.webp">
+      <div class="card-content">
+        <h3>As + papas + lata bebida</h3>
+        <p>Pan de 15 cm con carne a la plancha (italiano o completo), papas individuales y bebida en lata de 350 cc.</p>
+        <div class="card-footer">
+          <span class="price">$6990</span>
+          <button class="add-btn" onclick="addToCart('As + papas + lata bebida', 6990, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <img src="Promociones/3.webp">
+      <div class="card-content">
+        <h3>Completo XL + papas + bebida</h3>
+        <p>Completo o italiano de 25 cm con papas individuales y bebida en lata 350 cc.</p>
+        <div class="card-footer">
+          <span class="price">$6990</span>
+          <button class="add-btn" onclick="addToCart('Completo XL + papas + bebida', 6990, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <img src="Promociones/4.webp">
+      <div class="card-content">
+        <h3>As XL + papas + lata bebida</h3>
+        <p>Pan 25 cm con carne a la plancha (italiano o completo), papas individuales y bebida 350 cc a elección.</p>
+        <div class="card-footer">
+          <span class="price">$7990</span>
+          <button class="add-btn" onclick="addToCart('As XL + papas + lata bebida', 7990, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <img src="Promociones/5.webp">
+      <div class="card-content">
+        <h3>Churrasco + papas + lata bebida</h3>
+        <p>Churrasco (variedades) más porción de papas fritas individuales y bebida en lata 350 cc.</p>
+        <div class="card-footer">
+          <span class="price">$6990</span>
+          <button class="add-btn" onclick="addToCart('Churrasco + papas + lata bebida', 6990, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+      <img src="Promociones/6.webp">
+      <div class="card-content">
+        <h3>Promo Churrasco Amigos</h3>
+        <p>4 churrascos (variedades) + papas fritas XL + bebida 1.25 L a elección.</p>
+        <div class="card-footer">
+          <span class="price">$21890</span>
+          <button class="add-btn" onclick="addToCart('Promo Churrasco Amigos', 21890, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card">
+      <img src="Promociones/7.webp">
+      <div class="card-content">
+        <h3>3 churrascos + papas + bebida</h3>
+        <p>3 churrascos italianos + papas grandes + bebida de 1.25 L.</p>
+        <div class="card-footer">
+          <span class="price">$15990</span>
+          <button class="add-btn" onclick="addToCart('3 churrascos + papas + bebida', 15990, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+      <img src="Promociones/8.webp">
+      <div class="card-content">
+        <h3>Pizza + papas + bebida</h3>
+        <p>Pizza individual de pepperoni + papas individuales + bebida en lata.</p>
+        <div class="card-footer">
+          <span class="price">$4990</span>
+          <button class="add-btn" onclick="addToCart('Pizza + papas + bebida', 4990, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="card">
+      <img src="Promociones/9.webp">
+      <div class="card-content">
+        <h3>4 italianos + papas + bebida</h3>
+        <p>4 completos o italianos + papas grandes + bebida 1.25 L.</p>
+        <div class="card-footer">
+          <span class="price">$15990</span>
+          <button class="add-btn" onclick="addToCart('4 italianos + papas + bebida', 15990, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="card">
+      <img src="promo.webp">
+      <div class="card-content">
+        <h3>3 As + papas + bebida</h3>
+        <p>3 as (italiano o completo) de 15 cm + papas XL + bebida 1.25 L.</p>
+        <div class="card-footer">
+          <span class="price">$15990</span>
+          <button class="add-btn" onclick="addToCart('3 As + papas + bebida', 15990, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="card">
+      <img src="promo.webp">
+      <div class="card-content">
+        <h3>3 italianos + papas + bebida</h3>
+        <p>3 completos o italianos + papas grandes + bebida 1.25 L.</p>
+        <div class="card-footer">
+          <span class="price">$12990</span>
+          <button class="add-btn" onclick="addToCart('3 italianos + papas + bebida', 12990, 'promo.webp', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- =========================== -->
+<!-- LOS ELEGIDOS -->
+<!-- =========================== -->
+
+<div class="container" id="loselegidos">
+  <h1>Los Elegidos <span style="color:#c50000; font-size:1.2rem;">(desde $7.000)</span></h1>
+  <div class="menu-container">
+
+    <!-- DOS ITALIANOS + PAPAS + BEBIDA -->
+    <div class="card">
+      <img src="Los Elegidos/1.webp">
+      <div class="card-content">
+        <h3>Dos Italianos + Papas + Bebida</h3>
+        <p>Dos completos italianos acompañados de crujientes papas fritas y bebida a elección.</p>
+
+        <div class="card-footer">
+          <div>
+            <span class="price">$7000</span>
+            <span style="text-decoration: line-through; color:#888; font-size:0.85rem; margin-left:8px;">
+              $8490
+            </span>
+          </div>
+
+          <button class="add-btn" onclick="addToCart('Dos Italianos + Papas + Bebida', 7000, 'dos_italianos_combo.jpg', event)">+</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================== -->
+<!-- CHURRASCOS -->
+<!-- =========================== -->
+
+<div class="container" id="churrascos">
+  <h1>Churrascos</h1>
+  <div class="menu-container">
+
+    <!-- CHURRASCO ITALIANO -->
+    <div class="card">
+      <img src="Churrasco/1.webp">
+      <div class="card-content">
+        <h3>Churrasco Italiano</h3>
+        <p>Churrasco italiano.</p>
+        <div class="card-footer">
+          <span class="price">$4500</span>
+          <button class="add-btn" onclick="addToCart('Churrasco Italiano', 4500, 'churrasco_italiano.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHURRASCO CHACARERO -->
+    <div class="card">
+      <img src="Churrasco/2.webp">
+      <div class="card-content">
+        <h3>Churrasco Chacarero</h3>
+        <p>Churrasco chacarero.</p>
+        <div class="card-footer">
+          <span class="price">$4500</span>
+          <button class="add-btn" onclick="addToCart('Churrasco Chacarero', 4500, 'churrasco_chacarero.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHURRASCO LUCO -->
+    <div class="card">
+      <img src="churrasco_luco.jpg">
+      <div class="card-content">
+        <h3>Churrasco Luco</h3>
+        <p>Churrasco luco.</p>
+        <div class="card-footer">
+          <span class="price">$4000</span>
+          <button class="add-btn" onclick="addToCart('Churrasco Luco', 4000, 'churrasco_luco.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHURRASCO COMPLETO -->
+    <div class="card">
+      <img src="churrasco_completo.jpg">
+      <div class="card-content">
+        <h3>Churrasco Completo</h3>
+        <p>Churrasco completo.</p>
+        <div class="card-footer">
+          <span class="price">$4000</span>
+          <button class="add-btn" onclick="addToCart('Churrasco Completo', 4000, 'churrasco_completo.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================== -->
+<!-- AS CARNE A LA PLANCHA -->
+<!-- =========================== -->
+
+<div class="container" id="asplancha">
+  <h1>As Carne a la Plancha</h1>
+  <div class="menu-container">
+
+    <!-- AS DINÁMICO -->
+    <div class="card">
+      <img src="AS/1.webp">
+      <div class="card-content">
+        <h3>As Dinámico</h3>
+        <p>As dinámico.</p>
+        <div class="card-footer">
+          <span class="price">$3200</span>
+          <button class="add-btn" onclick="addToCart('As Dinámico', 3200, 'as_dinamico.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AS CHACARERO -->
+    <div class="card">
+      <img src="AS/2.webp">
+      <div class="card-content">
+        <h3>As Chacarero</h3>
+        <p>As chacarero.</p>
+        <div class="card-footer">
+          <span class="price">$3500</span>
+          <button class="add-btn" onclick="addToCart('As Chacarero', 3500, 'as_chacarero.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AS COMPLETO XL -->
+    <div class="card">
+      <img src="AS/3.webp">
+      <div class="card-content">
+        <h3>As Completo XL</h3>
+        <p>Carne a la plancha, chucrut, salsa americana y tomate picado.</p>
+        <div class="card-footer">
+          <span class="price">$3600</span>
+          <button class="add-btn" onclick="addToCart('As Completo XL', 3600, 'as_completo_xl.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AS DINÁMICO XL -->
+    <div class="card">
+      <img src="AS/4.webp">
+      <div class="card-content">
+        <h3>As Dinámico XL</h3>
+        <p>Pan de completo 25 pulgadas con carne, chucrut, salsa americana, tomate y palta.</p>
+        <div class="card-footer">
+          <span class="price">$4100</span>
+          <button class="add-btn" onclick="addToCart('As Dinámico XL', 4100, 'as_dinamico_xl.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AS COMPLETO -->
+    <div class="card">
+      <img src="as_completo.jpg">
+      <div class="card-content">
+        <h3>As Completo</h3>
+        <p>As completo.</p>
+        <div class="card-footer">
+          <span class="price">$2900</span>
+          <button class="add-btn" onclick="addToCart('As Completo', 2900, 'as_completo.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AS ITALIANO -->
+    <div class="card">
+      <img src="as_italiano.jpg">
+      <div class="card-content">
+        <h3>As Italiano</h3>
+        <p>As italiano.</p>
+        <div class="card-footer">
+          <span class="price">$3200</span>
+          <button class="add-btn" onclick="addToCart('As Italiano', 3200, 'as_italiano.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AS ITALIANO XL -->
+    <div class="card">
+      <img src="as_italiano_xl.jpg">
+      <div class="card-content">
+        <h3>As Italiano XL</h3>
+        <p>Carne a la plancha en pan de completo, con tomate y palta.</p>
+        <div class="card-footer">
+          <span class="price">$3900</span>
+          <button class="add-btn" onclick="addToCart('As Italiano XL', 3900, 'as_italiano_xl.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AS CHACARERO XL -->
+    <div class="card">
+      <img src="as_chacarero_xl.jpg">
+      <div class="card-content">
+        <h3>As Chacarero XL</h3>
+        <p>Pan de completo 25 pulgadas con carne, tomate, porotos verdes y mayonesa.</p>
+        <div class="card-footer">
+          <span class="price">$4300</span>
+          <button class="add-btn" onclick="addToCart('As Chacarero XL', 4300, 'as_chacarero_xl.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================== -->
+<!-- OTROS -->
+<!-- =========================== -->
+
+<div class="container" id="otros">
+  <h1>Otros</h1>
+  <div class="menu-container">
+
+    <!-- PAPAS FRITAS MEDIANAS -->
+    <div class="card">
+      <img src="Promociones/2.webp">
+      <div class="card-content">
+        <h3>Papas fritas medianas</h3>
+        <p>Porción de papas fritas (pesar gramaje).</p>
+        <div class="card-footer">
+          <span class="price">$2600</span>
+          <button class="add-btn" onclick="addToCart('Papas fritas medianas', 2600, 'papas_medianas.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAPAS FRITAS XL -->
+    <div class="card">
+      <img src="Promociones/1.webp">
+      <div class="card-content">
+        <h3>Papas fritas XL</h3>
+        <p>Porción de papas fritas (pensar gramaje).</p>
+        <div class="card-footer">
+          <span class="price">$3900</span>
+          <button class="add-btn" onclick="addToCart('Papas fritas XL', 3900, 'papas_xl.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALCHIPAPAS MEDIANAS -->
+    <div class="card">
+      <img src="Promociones/3.webp">
+      <div class="card-content">
+        <h3>Salchipapas medianas</h3>
+        <p>Porción de papas y salchichas picadas en rodajas (pensar gramaje).</p>
+        <div class="card-footer">
+          <span class="price">$3290</span>
+          <button class="add-btn" onclick="addToCart('Salchipapas medianas', 3290, 'salchipapas_medianas.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALCHIPAPAS XL -->
+    <div class="card">
+      <img src="Promociones/4.webp">
+      <div class="card-content">
+        <h3>Salchipapas XL</h3>
+        <p>Salchipapas de (pensar gramaje junto porción de salchicha).</p>
+        <div class="card-footer">
+          <span class="price">$4600</span>
+          <button class="add-btn" onclick="addToCart('Salchipapas XL', 4600, 'salchipapas_xl.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMPANADA DE QUESO -->
+    <div class="card">
+      <img src="Promociones/5.webp">
+      <div class="card-content">
+        <h3>Empanada de queso</h3>
+        <p>Empanadas crocantes de queso, fritas.</p>
+        <div class="card-footer">
+          <span class="price">$1100</span>
+          <button class="add-btn" onclick="addToCart('Empanada de queso', 1100, 'empanada_queso.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 EMPANADAS -->
+    <div class="card">
+      <img src="Promociones/6.webp">
+      <div class="card-content">
+        <h3>2 empanadas de queso</h3>
+        <p>Dos empanadas crujientes de queso.</p>
+        <div class="card-footer">
+          <span class="price">$2000</span>
+          <button class="add-btn" onclick="addToCart('2 empanadas de queso', 2000, '2_empanadas.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOPAIPILLAS -->
+    <div class="card">
+      <img src="Promociones/7.webp">
+      <div class="card-content">
+        <h3>Sopaipillas</h3>
+        <p>Tres sopaipillas tradicionales de zapallo.</p>
+        <div class="card-footer">
+          <span class="price">$1390</span>
+          <button class="add-btn" onclick="addToCart('Sopaipillas', 1390, 'sopaipillas.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PIZZA INDIVIDUAL PEPPERONI -->
+    <div class="card">
+      <img src="Promociones/8.webp">
+      <div class="card-content">
+        <h3>Pizza individual pepperoni</h3>
+        <p>Pizza individual con salsa de tomate, queso y pepperoni.</p>
+        <div class="card-footer">
+          <span class="price">$3290</span>
+          <button class="add-btn" onclick="addToCart('Pizza individual pepperoni', 3290, 'pizza_pepperoni.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================== -->
+<!-- BEBESTIBLES -->
+<!-- =========================== -->
+
+<div class="container" id="bebestibles">
+  <h1>Bebestibles</h1>
+  <div class="menu-container">
+
+    <!-- PEPSI REGULAR -->
+    <div class="card">
+      <img src="Bebestibles/1.webp">
+      <div class="card-content">
+        <h3>Bebida Lata Pepsi 350 ml</h3>
+        <p>Bebida Lata Regular 350 cc Pepsi.</p>
+        <div class="card-footer">
+          <span class="price">$1490</span>
+          <button class="add-btn" onclick="addToCart('Pepsi 350 ml', 1490, 'pepsi_regular.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PEPSI ZERO -->
+    <div class="card">
+      <img src="Bebestibles/2.webp">
+      <div class="card-content">
+        <h3>Pepsi Zero 350 ml</h3>
+        <p>Bebida Lata Zero Azúcar Pepsi 350 ml.</p>
+        <div class="card-footer">
+          <span class="price">$1490</span>
+          <button class="add-btn" onclick="addToCart('Pepsi Zero 350 ml', 1490, 'pepsi_zero.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEM REGULAR -->
+    <div class="card">
+      <img src="Bebestibles/3.webp">
+      <div class="card-content">
+        <h3>Bebida Lata Kem 350 ml</h3>
+        <p>Bebida Lata Regular 350 cc Kem.</p>
+        <div class="card-footer">
+          <span class="price">$1490</span>
+          <button class="add-btn" onclick="addToCart('Kem 350 ml', 1490, 'kem_regular.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCORE GORILA GUARANÁ -->
+    <div class="card">
+      <img src="Bebestibles/4.webp">
+      <div class="card-content">
+        <h3>Score Gorila Guaraná 473 ml</h3>
+        <p>Bebida Energizante Score Gorila Guaraná lata 473 ml.</p>
+        <div class="card-footer">
+          <span class="price">$1990</span>
+          <button class="add-btn" onclick="addToCart('Score Gorila Guaraná 473 ml', 1990, 'score_gorila.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCORE ORIGINAL -->
+    <div class="card">
+      <img src="Bebestibles/5.webp">
+      <div class="card-content">
+        <h3>Score Original 473 ml</h3>
+        <p>Bebida Energética Score Original 473 ml.</p>
+        <div class="card-footer">
+          <span class="price">$1990</span>
+          <button class="add-btn" onclick="addToCart('Score Original 473 ml', 1990, 'score_original.jpg', event)">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================== -->
+<!-- FOOTER PROFESIONAL -->
+<!-- =========================== -->
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- LOGO + TEXTO CENTRADO -->
+    <div class="footer-section footer-brand">
+      <img src="terraurbana.png" alt="Logo TerraUrbana" class="footer-logo">
+      <div class="footer-text">
+        <h3>Terra Urbana</h3>
+        <p>
+          Somos la mejor comida rápida de Maipú!!
+        </p>
+      </div>
+    </div>
+
+    <!-- SECCIONES -->
+    <div class="footer-section">
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="#promociones">Promociones</a></li>
+        <li><a href="#irresistibles">Irresistibles</a></li>
+        <li><a href="#loselegidos">Los Elegidos</a></li>
+        <li><a href="#churrascos">Churrascos</a></li>
+        <li><a href="#asplancha">As a la Plancha</a></li>
+        <li><a href="#bebestibles">Bebestibles</a></li>
+      </ul>
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="footer-section">
+      <h4>Contacto</h4>
+      <p>📍 Ohiggins 420, Santiago, Chile</p>
+      <p>📱 +56 9 6620 4261</p>
+    </div>
+
+    <!-- REDES -->
+    <div class="footer-section">
+      <h4>Síguenos</h4>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=61578425550933"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/terraurbana_/"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 TerraUrbana — Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
